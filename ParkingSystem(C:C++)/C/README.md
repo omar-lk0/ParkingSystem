@@ -1,110 +1,52 @@
-# C Project / Final Term - 20 Points
-## EN
-For the final term of the C project, you must implement the whole application (mandatory to obtain the following points):
+# Online Parking Payment System
 
-### (5p) Validations
-> [!note]
-> Validate all the inputs when requiring them.<br/>
-> Be explicit, add the expected format.
+A simple terminal-based C app for paying for parking, viewing transaction history, deleting transactions, and managing user settings. Data is stored in a CSV file.
 
-#### Example
+## Build & Run
 
-```cpp
-'🚫 Please input date:'
-// User doesn't know the expected format
-// User doesn't know what the date is for
-
-'✅ Date of aquisition (dd/mm/yyyy):'
-// User knows the format
-// User knows the date refers to the aquisition date
+```bash
+gcc assignment_final.c -o parking
+./parking
 ```
 
+> **Note:** Before compiling, update the `FILENAME` path at the top of the source file to a valid path on your machine, it currently points to a fixed local path.
 
-### (5p) Colors
-> [!note]
-> Add colors to the app.<br/>
-> Colors must not take the whole line.<br/>
-> Color only some elements, like the name of the product, parking lot etc. depending on the project.
+## Main Menu
 
-#### Example
+| Option | Action |
+|--------|--------|
+| `1` | Pay for Parking |
+| `2` | View History |
+| `3` | Delete a Transaction |
+| `4` | Settings |
+| `0` | Exit |
 
-🚫 $${\color{red}4. \space Kiwi - 0.68eur \space \(7 pieces\)}$$<br/>
-```cpp
-// All the line is colored. This is the same as all being white, so it's not counted as you using colors
-```
+## 1. Pay for Parking
 
-✅ $${\color{darkgray}4. \space \color{lightblue}Kiwi \color{darkgray}- \color{lightgreen}0.68\color{darkgray}eur \space \(\color{orange}7 \color{darkgray}pieces\)}$$<br/>
-```cpp
-// Only the important elements are colored: product name, price and amount
-```
+You'll be prompted for:
+- **License Plate** : at least 3 characters (e.g. `TM99XYZ`)
+- **Zone** : `Yellow`, `Red`, or `Green` (case-insensitive)
+  - Yellow: 1.0 RON/hour
+  - Red: 1.5 RON/hour
+  - Green: 2.0 RON/hour
+- **Duration** : whole number of hours, ≥ 1
 
-### (5p) Structs
-> [!note]
-> Use C's `struct` to store in app data. For example:
-```cpp
-struct Product {
-  char name[100];
-  int amount;
-  float price;
-}
-```
+The cost is calculated automatically and saved to the transaction file.
 
-### (5p) Functions
-> [!note]
-> Extract core logic to separate functions.<br/>
-> For example: `read_file()`, `write_file()`, `add_product(char* name, int amount, ...)` etc.
+## 2. View History
 
-## RO
-Trebuie implementată aplicația integral pentru termenul final al proiectului C (obligatoriu, pentru obținerea următoarelor puncte):
+Lists all saved transactions with plate, zone, hours, and cost (converted to your selected currency).
 
-### (5p) Validări
-> [!note]
-> Validați datele când le cereți.<br/>
-> Fiți expliciți în ceea ce cereți utilizatorului aplicației.
+## 3. Delete a Transaction
 
-#### Exemplu
+Shows the transaction list with index numbers, enter the number of the one you want to remove, or `0` to go back.
 
-```cpp
-'🚫 Introdu data:'
-// Utilizatorul nu știe formatul în care se vrea introdusă data
-// Utilizatorul nu știe pentru ce este introdusă data
+## 4. Settings
 
-'✅ Data achiziționării (zz/ll/aaaa):'
-// Utilizatorul știe formatul
-// Utilizatorul știe că data la care se face referire este data achiziționării
-```
+- **Change Username** : letters/spaces, up to 49 characters
+- **Change Currency** : choose between RON, EUR, or USD; all costs convert automatically
 
+## Notes
 
-### (5p) Culori
-> [!note]
-> Adăugați culori aplicației.<br/>
-> Culorile nu trebuie să fie pe întreaga linie.<br/>
-> Colorați doar anumite elemente precum numele produsului, numele străzii locului de parcare etc. în funcție de ce se cere în proiect.
-
-#### Exemplu
-
-🚫 $${\color{red}4. \space Kiwi - 1.05RON \space \(7 bucăți\)}$$<br/>
-```cpp
-// Linia este colorată în întregime. E la fel ca în cazul în care linia era albă, acest mod nu se contorizează ca folosire de culori.
-```
-
-✅ $${\color{darkgray}4. \space \color{lightblue}Kiwi \color{darkgray}- \color{lightgreen}1.05\color{darkgray}RON \space \(\color{orange}7 \color{darkgray}bucăți\)}$$<br/>
-```cpp
-// Doar elementele importante sunt colorate: numele, prețul și cantitatea produsului
-```
-
-### (5p) Structuri
-> [!note]
-> Folosiți `struct` din C pentru stocharea de date în aplicație. De examplu:
-```cpp
-struct Product {
-  char name[100];
-  int amount;
-  float price;
-}
-```
-
-### (5p) Funcții
-> [!note]
-> Extrageți funcționalitatea de bază a aplicației în funcții separate.<br/>
-> De exemplu: `read_file()`, `write_file()`, `add_product(char* name, int amount, ...)` etc.
+- Invalid input is rejected with a message explaining the expected format, just try again.
+- Transactions persist across runs in the CSV file defined by `FILENAME`.
