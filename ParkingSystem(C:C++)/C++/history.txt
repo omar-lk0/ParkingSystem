@@ -1,0 +1,18 @@
+TM99XYZ|Vasile Alecsandri Street|Red|3|4.5
+TM12ABC|Liberty Square|Green|2|4.0
+TM99XYZ|Vasile Alecsandri Street|Red|3|4.50
+TM99XYZ|Vasile Alecsandri Street|Red|3|4.50
+TM99XYZ|Vasile Alecsandri Street|Red|3|4.50
+TM99XYZ|Vasile Alecsandri Street|Red|3|4.50
+TM99XYZ|Main Street|Red|3|4.50
+BMW|Aleea Lirei|Yellow|5|5.00
+TEST99|Street|Red|2|3.00
+TM99XYZ|Test|Red|1|1.50
+B12ABC|Test|Yellow|1|1.00
+B 123 ABC|Test|Green|1|2.00
+BN12ABC|Test|Red|1|1.50
+TM99XYZ|TestStreet|Red|1|1.50
+B12ABC|TestStreet|Yellow|1|1.00
+B123ABC|TestStreet|Green|1|2.00
+TM99XYZ|Main Street|Red|3|4.50
+B123ABC|Piata Unirii|Yellow|2|2.00
